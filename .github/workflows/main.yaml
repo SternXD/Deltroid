@@ -13,8 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: 'macos-12'
-            version: '14.2'
+          - os: 'macos-13'
+            version: '14.3.1'
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -33,7 +33,7 @@ jobs:
 
       - name: Build Deltroid
         run: |
-          xcodebuild -project Deltroid.xcodeproj \
+          xcodebuild -project Delta.xcodeproj \
           -scheme Deltroid \
           -sdk iphoneos \
           archive -archivePath ./archive \
