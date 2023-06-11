@@ -46,7 +46,7 @@ jobs:
       - name: Fakesign app
         run: |
           rm -rf archive.xcarchive/Products/Applications/Delta.app/Frameworks/DeltaCore.framework/Frameworks/
-          ldid -SDeltroid/Resources/tempEnt.plist archive.xcarchive/Products/Applications/Delta.app/Delta
+          ldid -S Delta/Resources/tempEnt.plist archive.xcarchive/Products/Applications/Delta.app/Delta
       - name: Convert to IPA
         run: |
           mkdir Payload
