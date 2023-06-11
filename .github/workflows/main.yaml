@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Checkout submodules
-        run: git submodule update --force --recursive --init --remote && pod install
+        run: git submodule update --recursive --init && pod install
 
       - name: Install dependencies
         run: brew install ldid
@@ -34,7 +34,7 @@ jobs:
       - name: Build Deltroid
         run: |
           xcodebuild -project Delta.xcodeproj \
-          -scheme Dekta \
+          -scheme Delta \
           -sdk iphoneos \
           archive -archivePath ./archive \
           CODE_SIGNING_REQUIRED=NO \
