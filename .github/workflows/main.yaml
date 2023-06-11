@@ -34,7 +34,7 @@ jobs:
       - name: Build Deltroid
         run: |
           xcodebuild -project Delta.xcodeproj \
-          -scheme Deltroid \
+          -scheme Dekta \
           -sdk iphoneos \
           archive -archivePath ./archive \
           CODE_SIGNING_REQUIRED=NO \
@@ -45,16 +45,16 @@ jobs:
           | xcpretty && exit ${PIPESTATUS[0]}
       - name: Fakesign app
         run: |
-          rm -rf archive.xcarchive/Products/Applications/Deltroid.app/Frameworks/DeltroidCore.framework/Frameworks/
-          ldid -SDeltroid/Resources/tempEnt.plist archive.xcarchive/Products/Applications/Deltroid.app/Deltroid
+          rm -rf archive.xcarchive/Products/Applications/Delta.app/Frameworks/DeltaCore.framework/Frameworks/
+          ldid -SDeltroid/Resources/tempEnt.plist archive.xcarchive/Products/Applications/Delta.app/Delta
       - name: Convert to IPA
         run: |
           mkdir Payload
-          mkdir Payload/Deltroid.app
-          cp -R archive.xcarchive/Products/Applications/Deltroid.app/ Payload/Deltroid.app/
-          zip -r Deltroid.ipa Payload
+          mkdir Payload/Delta.app
+          cp -R archive.xcarchive/Products/Applications/Delta.app/ Payload/Delta.app/
+          zip -r Delta.ipa Payload
       - name: Upload Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: Deltroid.ipa
-          path: Deltroid.ipa
+          name: Delta.ipa
+          path: Delta.ipa
